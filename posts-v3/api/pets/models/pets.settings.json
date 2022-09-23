@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pets",
+  "info": {
+    "name": "Pets"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "owner": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "pets"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "cat",
+        "dog"
+      ]
+    }
+  }
+}
